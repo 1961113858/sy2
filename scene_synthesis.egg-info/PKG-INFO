@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: scene_synthesis
+Version: 0.1
+Requires-Dist: torch>=1.7.0
+Requires-Dist: torchvision>=0.8.0
+Requires-Dist: numpy>=1.19.0
+Requires-Dist: matplotlib>=3.3.0
+Requires-Dist: hydra-core>=1.1.0
+Requires-Dist: omegaconf>=2.1.0

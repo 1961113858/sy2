@@ -1,0 +1,17 @@
+dataset:
+  root: "D:/cxcy2/LEGO-Net-main/sy2/data"
+  room_types: ["bedroom"]
+  max_parts: 20
+  batch_size: 32
+  num_workers: 4
+
+train:
+  max_epochs: 100
+  learning_rate: 0.001
+  device: "cuda"
+  checkpoint_dir: "checkpoints"
+  log_interval: 100
+
+model:
+  latent_dim: 256
+  hidden_dim: 512 

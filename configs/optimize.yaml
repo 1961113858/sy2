@@ -1,0 +1,67 @@
+# VAE模型配置
+vae:
+  latent_dim: 256
+  abs_dim: 10  # 位置(3) + 旋转(3) + 尺寸(3) + 类别(1)
+  max_parts: 80
+  num_class: 20
+  weight_kld: 0.1
+
+# 优化器配置
+optimizer:
+  learning_rate: 0.001
+  beta1: 0.9
+  beta2: 0.999
+  weight_decay: 0.0001
+
+# 优化参数
+optimization:
+  num_steps: 200  # 优化步数
+  overlap_weight: 10.0  # 重叠损失权重
+  rel_weight: 5.0  # 相对属性损失权重
+  min_distance: 0.3  # 最小距离约束（米）
+  position_range: 4.0  # 位置范围限制（米）
+  size_min: 0.3  # 最小尺寸（米）
+  size_max: 3.0  # 最大尺寸（米）
+  pos_noise_level: 0.1  # 位置噪声标准差
+  ang_noise_level: 0.26179939  # 角度噪声标准差（约15度）
+  denoise_within_floorplan: true  # 是否限制在地板平面内
+  denoise_no_penetration: true  # 是否避免物体相交
+  denoise_weigh_by_class: true  # 是否根据物体类别加权移动
+
+# 图注意力配置
+gat:
+  dropout: 0.1
+  alpha: 0.2
+  hidden_dim: 256
+
+# 相对属性预测器配置
+rel_predictor:
+  hidden_dims: [256, 128]
+  dropout: 0.1
+
+# 输出配置
+output:
+  dir: "results/neural_optimization"
+  save_interval: 20
+  visualize: true
+
+# 训练设备
+train:
+  device: "cpu"  # 或 "cuda"
+
+# 数据配置
+data:
+  root: "data/processed"
+  room_types: ["bedroom"]
+  max_parts: 80
+
+# 神经网络特定参数
+neural:
+  enabled: true  # 是否启用神经网络优化
+  latent_dim: 256  # 潜在空间维度
+  hidden_dim: 512  # 隐藏层维度
+
+# 噪声配置
+noise:
+  position: 0.1
+  angle: 0.1 

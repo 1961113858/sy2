@@ -1,0 +1,3 @@
+abs_recon_chamfer_distance: 0.1686
+abs_recon_rotation_error: 0.0321
+abs_recon_scale_error: 0.0843

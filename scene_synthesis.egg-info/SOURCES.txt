@@ -1,0 +1,6 @@
+setup.py
+scene_synthesis.egg-info/PKG-INFO
+scene_synthesis.egg-info/SOURCES.txt
+scene_synthesis.egg-info/dependency_links.txt
+scene_synthesis.egg-info/requires.txt
+scene_synthesis.egg-info/top_level.txt

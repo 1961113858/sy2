@@ -1,0 +1,74 @@
+# 数据集配置
+dataset:
+  root: "D:/Sync2Gen-main_2/ToHongXin"  # 更新为新的数据路径
+  room_types: ["bedroom"]
+  max_parts: 80
+  train_split: 0.8
+  val_split: 0.1
+  batch_size: 32
+  num_workers: 4
+
+# VAE模型配置
+vae:
+  latent_dim: 256
+  abs_dim: 10  # 位置(3) + 旋转(3) + 尺寸(3) + 类别(1)
+  max_parts: 80
+  num_class: 20
+  weight_kld: 0.1
+  
+# 优化器配置
+optimizer:
+  learning_rate: 0.001
+  beta1: 0.9
+  beta2: 0.999
+  weight_decay: 0.0001
+
+# 训练配置
+train:
+  max_epochs: 100
+  learning_rate: 0.001
+  device: "cuda"
+  checkpoint_dir: "checkpoints"
+  log_interval: 100
+
+# 优化参数
+optimization:
+  num_steps: 200  # 优化步数
+  overlap_weight: 10.0  # 重叠损失权重
+  rel_weight: 5.0  # 相对属性损失权重
+  min_distance: 0.3  # 最小距离约束（米）
+  position_range: 4.0  # 位置范围限制（米）
+  size_min: 0.3  # 最小尺寸（米）
+  size_max: 3.0  # 最大尺寸（米）
+  pos_noise_level: 0.1  # 位置噪声标准差
+  ang_noise_level: 0.26179939  # 角度噪声标准差（约15度）
+  denoise_within_floorplan: true  # 是否限制在地板平面内
+  denoise_no_penetration: true  # 是否避免物体相交
+  denoise_weigh_by_class: true  # 是否根据物体类别加权移动
+
+# 模型配置
+model:
+  latent_dim: 256
+  hidden_dim: 512
+
+# 图注意力配置
+gat:
+  dropout: 0.1
+  alpha: 0.2
+  hidden_dim: 256
+
+# 相对属性预测器配置
+rel_predictor:
+  hidden_dims: [256, 128]
+  dropout: 0.1
+
+# 测试配置  
+test:
+  checkpoint: "checkpoints/lego_final.ckpt"
+  output_dir: "results/test_results"
+  
+# 日志配置
+logging:
+  project: "Scene-Synthesis"
+  log_dir: "logs"
+  wandb: False

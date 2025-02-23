@@ -1,0 +1,30 @@
+optimizer:
+  learning_rate: 0.001
+  beta1: 0.9
+  beta2: 0.999
+  weight_decay: 0.0001
+optimization:
+  num_steps: 200
+  overlap_weight: 10.0
+  rel_weight: 5.0
+  min_distance: 0.3
+  position_range: 4.0
+  size_min: 0.3
+  size_max: 3.0
+  pos_noise_level: 0.2
+  ang_noise_level: 0.5
+  denoise_within_floorplan: true
+  denoise_no_penetration: true
+  denoise_weigh_by_class: true
+neural:
+  enabled: true
+  latent_dim: 256
+  hidden_dim: 512
+output:
+  dir: results/neural_optimization
+  save_interval: 20
+  visualize: true
+  metrics:
+    reconstruction_error: true
+    overlap_ratio: true
+    scene_validity: true

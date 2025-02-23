@@ -1,0 +1,16 @@
+# 模型配置
+model:
+  input_dim: 32  # 7 (位置+尺寸+旋转) + 25 (物体类型one-hot)
+  output_dim: 32
+  latent_dim: 64
+  rel_attr_dim: 16
+  num_object_types: 25
+  checkpoint_path: "checkpoints/lego_final.ckpt"
+
+# 数据配置
+data:
+  num_test_samples: 100
+  batch_size: 32
+
+# 设备配置
+device: "cuda" if torch.cuda.is_available() else "cpu" 

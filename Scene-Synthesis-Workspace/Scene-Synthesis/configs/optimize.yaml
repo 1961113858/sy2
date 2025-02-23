@@ -1,0 +1,51 @@
+# 优化配置
+train:
+  device: 'cpu'  # 使用CPU
+
+# VAE模型配置
+vae:
+  latent_dim: 256
+  abs_dim: 10  # 位置(3) + 旋转(3) + 尺寸(3) + 类别(1)
+  max_parts: 80  # 修改为与训练时相同的值
+  num_class: 20  # 修改为与训练时相同的值
+  weight_kld: 0.1
+
+# 模型配置
+model:
+  checkpoint_path: 'checkpoints/lego_final.ckpt'
+  input_dim: 9  # 位置(3) + 旋转(3) + 尺寸(3)
+  hidden_dim: 256
+  latent_dim: 128
+  num_layers: 3
+
+# 优化器配置
+optimizer:
+  learning_rate: 0.001
+  beta1: 0.9
+  beta2: 0.999
+  weight_decay: 0.0001
+
+# 数据配置
+data:
+  root: 'D:/cxcy2/LEGO-Net-main/sy2/outputs'  # 使用outputs目录
+  room_types: ['bedroom']
+  max_parts: 80  # 修改为与训练时相同的值
+
+# 输出配置
+output_dir: 'results/optimized_scenes'
+num_test_samples: 2  # 减少测试样本数量
+
+# 优化参数
+optimization:
+  num_steps: 100  # 减少优化步数
+  overlap_weight: 20.0  # 重叠损失权重
+  rel_weight: 2.0  # 相对属性损失权重
+  min_distance: 0.3  # 最小距离约束（米）
+  position_range: 4.0  # 位置范围限制（米）
+  size_min: 0.3  # 最小尺寸（米）
+  size_max: 3.0  # 最大尺寸（米）
+  pos_noise_level: 0.1  # 位置噪声标准差
+  ang_noise_level: 0.26179939  # 角度噪声标准差（约15度）
+  denoise_within_floorplan: true  # 是否限制在地板平面内
+  denoise_no_penetration: true  # 是否避免物体相交
+  denoise_weigh_by_class: true  # 是否根据物体类别加权移动 

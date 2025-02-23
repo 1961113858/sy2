@@ -1,0 +1,35 @@
+config:
+  dataset:
+    root: D:/cxcy2/LEGO-Net-main/sy2/data/processed
+    room_types:
+    - bedroom
+    max_parts: 80
+    train_split: 0.8
+    val_split: 0.1
+    batch_size: 16
+    num_workers: 0
+  vae:
+    latent_dim: 256
+    abs_dim: 10
+    max_parts: 80
+    num_class: 20
+    weight_kld: 0.1
+  optimizer:
+    type: Adam
+    learning_rate: 0.001
+    beta1: 0.9
+    beta2: 0.999
+    weight_decay: 0.0001
+  train:
+    max_epochs: 100
+    save_interval: 10
+    log_interval: 100
+    checkpoint_dir: checkpoints
+    device: cpu
+  test:
+    checkpoint: best_model.pth
+    output_dir: results
+  logging:
+    project: Scene-Synthesis
+    log_dir: logs
+    wandb: false
